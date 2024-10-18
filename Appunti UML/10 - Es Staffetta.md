@@ -18,7 +18,7 @@ allenamento. Il giocatore può essere modificato solo quando è in allenamento.
 
 **Diagramma delle classi**
 
-![diag_classi.jpg](Es%20Staffetta%20b08756ae910a4236ba13ef317efa69a0/diag_classi.jpg)
+![diag_classi.jpg](https://github.com/BFl47/2.1.PdS/blob/main/Appunti%20UML/Immagini/10%20-%20diag_classi.jpg)
 
 **Responsabilità sulle associazioni**
 
@@ -33,20 +33,20 @@ M molteplicità, O operazione, R richieste
 
 **Diagramma degli stati e delle transizioni**
 
-![diag_stati gioc.jpg](Es%20Staffetta%20b08756ae910a4236ba13ef317efa69a0/diag_stati_gioc.jpg)
+![diag_stati gioc.jpg](https://github.com/BFl47/2.1.PdS/blob/main/Appunti%20UML/Immagini/10%20-%20diag_stati_gioc.jpg)
 
 **Specifica degli stati di Giocatore**
 
 InizioSpecificaStatiClasse Giocatore
 
-Stato: {Allenamento, InGara, FineGioco}
+&nbsp;&nbsp;&nbsp;&nbsp;Stato: {Allenamento, InGara, FineGioco}
 
-Variabili di stato ausiliarie:
-     trattopercorso: reale
+&nbsp;&nbsp;&nbsp;&nbsp;Variabili di stato ausiliarie:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     trattopercorso: reale
 
-Stato iniziale:
-     statoCorrente = Allenamento
-     trattopercorso= —
+&nbsp;&nbsp;&nbsp;&nbsp;Stato iniziale:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     statoCorrente = Allenamento\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     trattopercorso= —
 
 FineSpecifica
 
@@ -54,49 +54,49 @@ FineSpecifica
 
 InizioSpecificaTransizioniClasse Giocatore
 
-Transizione: Allenamento → InGara
-     inizio
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione: Allenamento → InGara
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     inizio
 
-Evento: inizio
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: inizio
 
-Condizione: nessuna
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: nessuna
 
-Azione:
-     pre: nessuna
-     post: this.trattopercorso = 0
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: this.trattopercorso = 0
 
-Transizione: InGara → InGara
-     bastone[nonarrivato]/bastone{dest: this}
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione: InGara → InGara\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     bastone[nonarrivato]/bastone{dest: this}
 
-Evento: bastone
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: bastone
 
-Condizione: this.trattopercorso < 100
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: this.trattopercorso < 100
 
-Azione:
-     pre: nessuna
-     post: nuovoevento = bastone{mitt = this, dest = this} and this.trattopercorso = pre(this.trattopercorso) + rand[1,101)
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: nuovoevento = bastone{mitt = this, dest = this} and this.trattopercorso = pre(this.trattopercorso) + rand[1,101)
 
-Transizione: InGara → FuoriGioco
-     bastone[arrivato]/bastone{dest: prossimo}
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione: InGara → FuoriGioco\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     bastone[arrivato]/bastone{dest: prossimo}
 
-Evento: bastone
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: bastone
 
-Condizione: this.trattopercorso ≥ 100
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: this.trattopercorso ≥ 100
 
-Azione:
-     pre: nessuna
-     post: sia: s tale che <this, s> in squadra (s è unico); ip =indexOf(squadra(this,s))+1; se ip < 10 allora sia: prossimo tale che indexOf(squadra(prossimo, s)) = ip; nuovoevento = bastone{mitt = this, dest = prossimo}
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: sia: s tale che <this, s> in squadra (s è unico); ip =indexOf(squadra(this,s))+1; se ip < 10 allora sia: prossimo tale che indexOf(squadra(prossimo, s)) = ip; nuovoevento = bastone{mitt = this, dest = prossimo}
 
-Transizione: FuoriGioco → Allenamento
-     fine
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione: FuoriGioco → Allenamento\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     fine
 
-Evento: fine
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: fine
 
-Condizione: nessuna
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: nessuna
 
-Azione:
-     pre: nessuna
-     post: —
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: —
 
 FineSpecifica
 
@@ -250,7 +250,7 @@ public class Squadra {
 }
 ```
 
-**Realizzazione classe Gara e associazione Partecipa, responsabilità singola,  2..* ←—→ 0..***
+**Realizzazione classe Gara e associazione Partecipa, responsabilità singola,  2..\* ←—→ 0..**
 
 ```jsx
 public class Gara {
@@ -274,7 +274,7 @@ public class Gara {
 	}
 	public Set<Squadra> getLinkPartecipa() {
 		if (quanteSquadre() < MINPARTECIPA)
-			throw RuntimeException("Eccezione molteplicità: deve essere 2..*");
+			throw RuntimeException("Eccezione molteplicità: deve essere 2..* ");
 		return (HashSet<Squadra>) insiemeLink.clone();
 	}
 	public int quanteSqudre() {return insiemeLink.size();}
