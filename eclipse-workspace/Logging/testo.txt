@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-05-10T21:15:01.709523200Z</date>
+  <millis>1683753301709</millis>
+  <nanos>523200</nanos>
+  <sequence>0</sequence>
+  <logger>Loggata2</logger>
+  <level>FINE</level>
+  <class>Loggata2</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>ok</message>
+</record>
+<record>
+  <date>2023-05-10T21:15:01.731528200Z</date>
+  <millis>1683753301731</millis>
+  <nanos>528200</nanos>
+  <sequence>1</sequence>
+  <logger>Loggata2</logger>
+  <level>INFO</level>
+  <class>Loggata2</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>fatto</message>
+</record>
+</log>
