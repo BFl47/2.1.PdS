@@ -4,10 +4,10 @@ Il diagramma  degli stati e della transizione viene definito per **una classe,**
 
 Uno **stato** rappresenta una situazione in cui un oggetto ha un insieme di proprietà stabili
 
-Una **transizione** modella un cambiamento di stato ed è denotata da:
+Una **transizione** modella un cambiamento di stato ed è denotata da:\
 **Evento[Condizione]/Azione**
 
-![diagramma_transizione.jpg](Stati%20e%20transizioni%20-%20Analisi%204015334c1cd04584b68bc6805ed5b9ab/diagramma_transizione.jpg)
+![diagramma_transizione.jpg](https://github.com/BFl47/2.1.PdS/blob/main/Appunti%20UML/Immagini/07%20-%20diagramma_transizione.jpg)
 
 **Significato:**
 
@@ -82,22 +82,22 @@ Il diagramma è sempre corredato da una **specifica** che chiarisce in dettaglio
 
 *es. Diagramma degli stati e delle transizioni*
 
-![diagramma_transizione1.jpg](Stati%20e%20transizioni%20-%20Analisi%204015334c1cd04584b68bc6805ed5b9ab/diagramma_transizione1.jpg)
+![diagramma_transizione1.jpg](https://github.com/BFl47/2.1.PdS/blob/main/Appunti%20UML/Immagini/07%20-%20diagramma_transizione1.jpg)
 
 *es. Specifica degli stati di Playlist*
 
 **InizioSpecificaStatiClasse Playlist**
 
-Stato: {Attesa, Esecuzione}
+&nbsp;&nbsp;&nbsp;&nbsp;Stato: {Attesa, Esecuzione}
 
-Variabili di stato ausiliarie:
-     player: Player
-     prossimobrano: intero
+&nbsp;&nbsp;&nbsp;&nbsp;Variabili di stato ausiliarie:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     player: Player\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     prossimobrano: intero
 
-Stato iniziale:
-     statoCorrente = Attesa
-     player = —
-     prossimobrano = — `//non definito`
+&nbsp;&nbsp;&nbsp;&nbsp;Stato iniziale:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     statoCorrente = Attesa\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     player = —\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     prossimobrano = — `//non definito`
 
 **FineSpecifica**
 
@@ -107,51 +107,51 @@ Stato iniziale:
 
 **InizioSpecificaTransizioniClasse Playlist**
 
-Transizione: Attesa → Esecuzione
-     **play**(player)[playlist non vuota]/playSong{dest: player}(br)
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione: Attesa → Esecuzione\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     **play**(player)[playlist non vuota]/playSong{dest: player}(br)
 
-Evento: play(player: Player)
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: play(player: Player)
 
-Condizione: this.contiene non vuoto
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: this.contiene non vuoto
 
-Azione:
-     pre: nessuna
-     post: nuovoevento = playSong{mitt = this, dest = player}(br: Brano) and this.player = player and this.prossimobrano = 0 and <this, br> in contiene and posizione(contiene(this, br)) = this.prossimobrano
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: nuovoevento = playSong{mitt = this, dest = player}(br: Brano) and this.player = player and this.prossimobrano = 0 and <this, br> in contiene and posizione(contiene(this, br)) = this.prossimobrano
 
 **Note:** “evento” denota l’evento ricevuto, “mitt” e “dest” il mittente e il destinatario dell’evento, “nuovoevento” denota l’evento da mandare con l’azione
 
-Transizione: Esecuzione → Esecuzione
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione: Esecuzione → Esecuzione\
      **done**[ci sono ancora brani da ascoltare]/playSong{dest: player}(br)
 
-Evento: done
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: done
 
-Condizione: this.prossimobrano < |{b | <this, b> in contiene}|
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: this.prossimobrano < |{b | <this, b> in contiene}|
 
-Azione:
-     pre: nessuna
-     post: nuovoevento = playSongo{mitt = this, dest = this.player}(br: Brano) and this.player = pre(this.player) and this.prossimobrano = pre(this.prossimobrano)+1 and <this, br> in contiene and posizione(contiene(this, br)) = this.prossimobrano
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: nuovoevento = playSongo{mitt = this, dest = this.player}(br: Brano) and this.player = pre(this.player) and this.prossimobrano = pre(this.prossimobrano)+1 and <this, br> in contiene and posizione(contiene(this, br)) = this.prossimobrano
 
-Transizione Esecuzione → Attesa
-     **done**[non ci sono brani da ascoltare]
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione Esecuzione → Attesa\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     **done**[non ci sono brani da ascoltare]
 
-Evento: done
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: done
 
-Condizione: this.prossimobrano ≥ |{b | <this,b> in contiene}|
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: this.prossimobrano ≥ |{b | <this,b> in contiene}|
 
-Azione:
-     pre: nessuna
-     post: this.prossimobrano = — and this.player = —
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: this.prossimobrano = — and this.player = —
 
-Transizione Esecuzione → Attesa
-     **reset/stopSong**{dest: player}
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione Esecuzione → Attesa\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     **reset/stopSong**{dest: player}
 
-Evento: reset
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: reset
 
-Condizione: nessuna
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: nessuna
 
-Azione:
-     pre: nessuna
-     post: nuovoevento = stopSong{mitt = this, dest = pre(this.player)} and this.prossimobrano = — and this.player = —
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: nuovoevento = stopSong{mitt = this, dest = pre(this.player)} and this.prossimobrano = — and this.player = —
 
 **FineSpecifica**
 
@@ -159,16 +159,16 @@ Azione:
 
 **InizioSpecificaStatiClasse Player**
 
-Stato: {Pronto, Esecuzione}
+&nbsp;&nbsp;&nbsp;&nbsp;Stato: {Pronto, Esecuzione}
 
-Variabili di stato ausiliarie:
-     playlist: Playlist
-     brano: Brano
+&nbsp;&nbsp;&nbsp;&nbsp;Variabili di stato ausiliarie:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     playlist: Playlist\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     brano: Brano
 
-Stato iniziale:
-     statoCorrente = Pronto
-     playlist = —
-     brano = —
+&nbsp;&nbsp;&nbsp;&nbsp;Stato iniziale:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     statoCorrente = Pronto\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     playlist = —\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     brano = —
 
 **FineSpecifica**
 
@@ -176,37 +176,37 @@ Stato iniziale:
 
 **InizioSpecificaTransizioniClasse Player**
 
-Transizione: Pronto → Esecuzione
-     **playSong**{mitt: playlist}(br)
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione: Pronto → Esecuzione\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     **playSong**{mitt: playlist}(br)
 
-Evento: playSong(br: Brano)
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: playSong(br: Brano)
 
-Condizione: nessuna
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: nessuna
 
-Azione:
-     pre: nessuna
-     post: this.playlist = evento.mitt and this.brano = br
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: this.playlist = evento.mitt and this.brano = br
 
-Transizione: Esecuzione → Pronto
-     **/done**{dest:playlist}
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione: Esecuzione → Pronto\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     **done**{dest:playlist}
 
-Evento: evento interno generato da this stesso
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: evento interno generato da this stesso
 
-Condizione: nessuna
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: nessuna
 
-Azione:
-     pre: nessuna
-     post: nuovoevento = done{mitt = this, dest = pre(this.playlist)} and this.playlist = — and this.brano == —
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: nuovoevento = done{mitt = this, dest = pre(this.playlist)} and this.playlist = — and this.brano == —
 
-Transizione: Esecuzione → Pronto
-     **stopSong**
+&nbsp;&nbsp;&nbsp;&nbsp;Transizione: Esecuzione → Pronto\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     **stopSong**
 
-Evento: stopSong
+&nbsp;&nbsp;&nbsp;&nbsp;Evento: stopSong
 
-Condizione: nessuna
+&nbsp;&nbsp;&nbsp;&nbsp;Condizione: nessuna
 
-Azione:
-     pre: evento.mitt = pre(this.playlist)
-     post: this.playlist = — and this.brano = —
+&nbsp;&nbsp;&nbsp;&nbsp;Azione:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     pre: evento.mitt = pre(this.playlist)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     post: this.playlist = — and this.brano = —
 
 **FineSpecifica**
