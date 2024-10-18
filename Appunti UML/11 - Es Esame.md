@@ -2,32 +2,32 @@
 
 **SpecificaStatiClasse Ordine**
 
-Stato: {PREPARAZIONE, CONSEGNA, COMPLETATO}
+&nbsp;&nbsp;&nbsp;&nbsp;Stato: {PREPARAZIONE, CONSEGNA, COMPLETATO}
 
-Variabili di stato ausiliarie:
-     Rider rider
+&nbsp;&nbsp;&nbsp;&nbsp;Variabili di stato ausiliarie:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Rider rider
 
-Stato iniziale:
-     statoCorrente = Stato.PREPARAZIONE;
-     rider = —;
+&nbsp;&nbsp;&nbsp;&nbsp;Stato iniziale:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     statoCorrente = Stato.PREPARAZIONE;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     rider = —;
 
 **FineSpecifica**
 
 **SegnaturaAttivitàComplesse**
 
-AttivitaPrincipale(insiemeRider insR, insiemeOrdini insO) : ();
-ConsegnaOrdini (insiemeRider insR, insiemeOrdini insO) : ();
-Analisi (insiemeRider insR, insiemeOrdini insO) : (String report);
+&nbsp;&nbsp;&nbsp;&nbsp;AttivitaPrincipale(insiemeRider insR, insiemeOrdini insO) : ();\
+&nbsp;&nbsp;&nbsp;&nbsp;ConsegnaOrdini (insiemeRider insR, insiemeOrdini insO) : ();\
+&nbsp;&nbsp;&nbsp;&nbsp;Analisi (insiemeRider insR, insiemeOrdini insO) : (String report);
 
 **SegnaturaAttivitàAtomiche:**
 
-Verifica(insiemeRider insR, insiemeOrdini insO) : (boolean ok);
+&nbsp;&nbsp;&nbsp;&nbsp;Verifica(insiemeRider insR, insiemeOrdini insO) : (boolean ok);
 
 **SegnaturaAttivitàIO:**
 
-RichiediAggiornamento() : ();
+&nbsp;&nbsp;&nbsp;&nbsp;RichiediAggiornamento() : ();
 
-Report(String report) : ();
+&nbsp;&nbsp;&nbsp;&nbsp;Report(String report) : ();
 
 **FineSegnatura**
 
@@ -131,7 +131,7 @@ public class OrdinePrioritario extends Ordine {
 }
 ```
 
-*Associazione Effettua (responsabilità doppia, 1..* ←-→ 1..1)*
+_Associazione Effettua (responsabilità doppia, 1..* ←-→ 1..1)_
 
 ```jsx
 public class TipoLinkEffettua {
@@ -159,7 +159,7 @@ public class TipoLinkEffettua {
 ```
 
 ```jsx
-public class ManagerEffettua {
+public final class ManagerEffettua {
 	private TipoLinkEffettua link;
 	private ManagerEffettua(TipoLinkEffettua l) {this.link = l;}
 	public TipoLinkEffettua getLink() {return link;}
