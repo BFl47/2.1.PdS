@@ -88,7 +88,7 @@ Aspetti fondamentali **oggetto Funtore**:
 - il **risultato** viene memorizzato in un **campo privato** ed è reso disponibile attraverso **getRis()**
 - il **corpo della funzione** è ora il corpo del **metodo run**
 - per fare in modo che ogni oggetto corrisponda esattamente ad un’attivazione della funzione funzione() bisogna introdurre una **variabile booleana eseguita**, che indica se l’attivazione corrente è stata eseguita o meno
-    - il metodo responsabile dell’esecuzione **run()** verifica se eseguita è true, in tal caso esce senza fare altro, altrimenti pone eseguita a true ed esegue il metodo
+    - il metodo responsabile dell’esecuzione **run()** verifica se eseguita è true, in tal caso esce senza fare altro, altrimenti pone eseguita a true ed esegue il metodo\
     **Nota**: è possibile generare una nuova attivazione del funtore costruendo un nuovo oggetto
     - il metodo **getRis()** restituisce il risultato solo se eseguita è true
     - il client può leggere la variabile eseguita attraverso il metodo **estEseguita()**
