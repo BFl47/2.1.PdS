@@ -23,29 +23,24 @@ Esso è composto da:
 
 | **Attività** |  |
 | --- | --- |
-| <nome> | attività atomiche (con input ed output): ha un punto di ingresso e un punto di uscita |
-| <nome>   □ → □ | attività composta (sottoprocesso) |
+| \<nome\> | attività atomiche (con input ed output): ha un punto di ingresso e un punto di uscita |
+| \<nome\>   □ → □ | attività composta (sottoprocesso) |
 | ● ◉ | simboli di inizio e fine (impropriamente stati) |
 
 Nota: le attività hanno un **solo** punto di ingresso e un **solo** punto di uscita
 
-| **Costrutti per controllo di flusso sequenziale** |  |
-| --- | --- |
-| [<condizione>]                                  
- | transizione, con condizione opzionale |
-|  | punto di decisione (split) |
-|  | punto di merge (join) |
+| **Costrutti per controllo di flusso sequenziale** |  
+| --- |
+| transizione, con condizione opzionale |
+| punto di decisione (split) |
+| punto di merge (join) |
 
 Si possono rappresentare **if-else**, **while**, **do-while**
 
-| **Costrutti per il controllo di flusso concorrente** |  |
-| --- | --- |
-|                                                   
-———————                                 
- | fork (and split) |
-|                          
-———————                                  
-                  | join (and join) |
+| **Costrutti per il controllo di flusso concorrente** |  
+| --- |                               
+| fork (and split) |
+| (merge and) join |
 
 Per ogni flusso (**thread**) di esecuzione vi è un “esecutore” che gestisce l’avanzamento del processo
 
@@ -71,7 +66,7 @@ Per mettere in evidenza quali azioni sono eseguite da un dato attore, si devono 
 | ▢ (tratteggiato) ↯ | regione interrompibile (per raggruppare attività e transizioni che supportano la terminazione del flusso di esecuzione) |
 | ⌛︎ at() | genera un evento per sincronizzarsi con una condizione esterna |
 
-| **Input/Output verso l’esterno** |  |
-| --- | --- |
-| ⌦ | invia segnale (in output) verso l’esterno e si prosegue senza aspettare risposte (**write**) |
-|  | ricevi segnale (in input), si resta bloccati finchè non esso non arriva (**read**) |
+| **Input/Output verso l’esterno** |  
+| --- |
+|invia segnale (in output) verso l’esterno e si prosegue senza aspettare risposte (**write**) |
+|ricevi segnale (in input), si resta bloccati finchè non esso non arriva (**read**) |
