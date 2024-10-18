@@ -40,7 +40,7 @@ Funzioni speciali:
 | data | int, int, int |
 | booleano | boolean |
 
-Con nome, cognome e nascita proprietà immutabili
+Con nome, cognome e nascita proprietà immutabili\
 Per default, una persona non è coniugata
 
 ```jsx
@@ -86,7 +86,7 @@ public class Persona {
 		eta = e;
 	}
 	public int getEta() {return eta;}
-	**public int setEta(int e) throws EccezionePrecondizioni {
+	public int setEta(int e) throws EccezionePrecondizioni {
 		if (e < 0 || e > 120)
 			throw new EccezionePrecondizini();
 		eta = e;
@@ -101,9 +101,9 @@ Se in fase di analisi viene data la seguente specifica:
 
 **InizioSpecificaOperazioni Analisi Statistica**
 
-**QuantiConiugati** (i: Insieme(Persona)): intero
-     pre: nessuna
-     post: *result* è il numero di coniugati nell’insieme di persone i
+&nbsp;&nbsp;&nbsp;&nbsp;**QuantiConiugati** (i: Insieme(Persona)): intero\
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: *result* è il numero di coniugati nell’insieme di persone i
 
 **FineSpecifica**
 
@@ -127,12 +127,12 @@ public class AnalisiStatistica {
 Se la classe UML C ha attributi con una loro molteplicità si può usare per la loro rappresentazione HashSet<String>
 
 - Va previsto un campo di tale classe, inizializzato con new() dal costruttore della classe Java C
-- per la scrittura sono necessarie due funzioni:
-**inserimento** di elementi nell’insieme
+- per la scrittura sono necessarie due funzioni:\
+**inserimento** di elementi nell’insieme\
 **cancellazione** degli stessi
 - per la lettura è necessaria la funzione **get**
 
-*es. numTel: stringa {0..*}*
+_es. numTel: stringa {0..*}_
 
 | Persona |
 | --- |
@@ -168,21 +168,22 @@ public class Persona {
 
 - La classe ha un **campo** di tipo HashSet
 - Il **costruttore** di Persona crea un oggetto di tale classe
-- **Funzioni** per gestire l’insieme:
-aggiungiNumTel(String)
-eliminaNumTel(String)
+- **Funzioni** per gestire l’insieme:\
+aggiungiNumTel(String)\
+eliminaNumTel(String)\
 getNumTel()
 - La funzione **get** restituisce una **copia** dell’insieme
 
 Queste considerazioni valgono ogni volta che un tipo UML viene realizzato mediante una classe Java i cui oggetti sono mutabili
 
+
 Se in fase di analisi viene data la seguente specifica:
 
 **InizioSpecificaOperazioni Gestione Rubrica**
 
-**TuttiNumTel** (p1: Persona, p2: Persona): Insieme(stringa)
-     pre: nessuna
-     post: *result* è l’insieme unione dei numeri di telefono di p1 e p2
+&nbsp;&nbsp;&nbsp;&nbsp;**TuttiNumTel** (p1: Persona, p2: Persona): Insieme(stringa)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: *result* è l’insieme unione dei numeri di telefono di p1 e p2
 
 **FineSpecifica**
 
@@ -203,38 +204,31 @@ Se getNumTel() non restituisse una copia dell’insieme dei numeri di telefono, 
 
 L’errore di progettazione che consente al cliente di distruggere le strutture di dati private di un oggetto si chiama **interferenza**
 
+
 Se in fase di analisi viene data la seguente specifica:
 
 **InizioSpecificaOperazioni Analisi Recapiti**
 
-**Convivono** (p1: Persona, p2: Persona): booleano
-     pre: nessuna
-     post: *result* vale true se p1 e p2 hanno almeno un numero telefonico in comune, false altrimenti
+&nbsp;&nbsp;&nbsp;&nbsp;**Convivono** (p1: Persona, p2: Persona): booleano\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: *result* vale true se p1 e p2 hanno almeno un numero telefonico in comune, false altrimenti
 
 **FineSpecifica**
 
-Si potrebbe realizzare getNumTel() restituendo un iteratore dell’insieme dei numeri di telefono, con un minore utilizzo di memoria.
+Si potrebbe realizzare getNumTel() restituendo un iteratore dell’insieme dei numeri di telefono, con un minore utilizzo di memoria.\
 Per eliminare la possibilità che i clienti facciano interferenza, bisogna restituire un iteratore realizzato tramite la classe IteratoreSolaLettura<T> che elimina remove() da Iterator.
 
 **Schemi realizzativi**
 
 |  | getNumTel() | Vantaggi | Svantaggi |
 | --- | --- | --- | --- |
-| Senza condivisione 
-di memoria | restituisce copia
-profonda (clone()) | client più 
-semplice | potenziale spreco
-di memoria |
-| Con condivisione 
-di memoria | restituisce
-IteratoreSolaLettura | client più 
-complicato | risparmio 
-di memoria |
+| Senza condivisione di memoria | restituisce copia profonda (clone()) | client più semplice | potenziale spreco di memoria |
+| Con condivisione di memoria | restituisce IteratoreSolaLettura | client più complicato | risparmio di memoria |
 
 ## Realizzazione di classe con attributi e operazioni
 
 - Per quanto riguarda gli **attributi**, si procede come nel caso precedente
-- Ogni **operazione** viene realizzata da una funzione public della classe Java
+- Ogni **operazione** viene realizzata da una funzione public della classe Java\
 Se non si vuol rendere l’operazione disponibile ai clienti, sono possibili anche funzioni private o protected
 
 *es. Persona con Reddito*
@@ -250,9 +244,9 @@ Se non si vuol rendere l’operazione disponibile ai clienti, sono possibili anc
 
 **InizioSpecificaOperazioniClasse Persona**
 
-**Aliquota** (): intero
-     pre: nessuna
-     post: result vale 0 se this.Reddito < 5001, vale 20 se this.Reddito compreso tra 5001 e 10000, vale 30 se this.Reddito è compreso tra 10001 e 30000, vale 40 se this.Reddito > 30000 
+&nbsp;&nbsp;&nbsp;&nbsp;**Aliquota** (): intero\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: result vale 0 se this.Reddito < 5001, vale 20 se this.Reddito compreso tra 5001 e 10000, vale 30 se this.Reddito è compreso tra 10001 e 30000, vale 40 se this.Reddito > 30000 
 
 **FineSpecifica**
 
@@ -311,8 +305,8 @@ public class Persona {
 
 ### Associazioni binarie, con molteplicità 0..1, a responsabilità singola, senza attributi
 
-C ———A——— D
-                      0..1
+C ———A——— D\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0..1
 
 La tabella delle responsabilità prodotta in fase di progetto ci indica che C è l’unica ad avere responsabilità sull’associazione A
 
@@ -336,9 +330,6 @@ Reddito: intero |
 | Aliquota(): intero
 Eta(): intero |
 
-lavora in →       0..1
-—————————
-
 | Azienda |
 | --- |
 | RagioneSociale: stringa
@@ -348,21 +339,24 @@ CapitaleSociale: intero |
 Aumenta(intero x)
 Diminuisci(intero x) |
 
+**Persona** _____________ **Azienda**\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lavora in →       0..1
+
 Si assuma che: la ragione sociale e la partita Iva non cambiano e solo Persona ha responsabilità sull’associazione (cioè da Persona è possibile ricavare Azienda)
 
 **InizioSpecificaOperazioniClasse Azienda**
 
-**Dimensione** (): stringa
-     pre: nessuna
-     post: result vale “Piccola” se this.CapitaleSociale < 51, “Media” se this.CapitaleSociale è compreso tra 51 e 250, “Grande” se this.CapitaleSociale > 250
+&nbsp;&nbsp;&nbsp;&nbsp;**Dimensione** (): stringa\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: result vale “Piccola” se this.CapitaleSociale < 51, “Media” se this.CapitaleSociale è compreso tra 51 e 250, “Grande” se this.CapitaleSociale > 250
 
-**Aumenta** (i: intero)
-     pre: i > 0;
-     post: this.CapitaleSociale vale pre(this.CapitaleSociale) + i
+&nbsp;&nbsp;&nbsp;&nbsp;**Aumenta** (i: intero)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: i > 0;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: this.CapitaleSociale vale pre(this.CapitaleSociale) + i
 
-**Diminuisci**(i: intero)
-     pre: 1 ≤ i ≤ this.CapitaleSociale
-     post: this.CapitaleSociale vale pre(this.CapitaleSociale) - i
+&nbsp;&nbsp;&nbsp;&nbsp;**Diminuisci**(i: intero)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: 1 ≤ i ≤ this.CapitaleSociale\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: this.CapitaleSociale vale pre(this.CapitaleSociale) - i
 
 **FineSpecifica**
 
@@ -421,7 +415,7 @@ public class Persona {
 
 Ciò vale anche se l’associazione coinvolge più volte la stessa classe, in questo caso il concetto di responsabilità si attribuisce ai ruoli, piuttosto che alle classi
 
-*es. Azienda ha responsabilità su associazione “holding” solo nel ruolo di controllata (e non controllante), quindi dato un oggetto x della classe Azienda, si vuole poter conoscere l’azienda controllante*
+_es. Azienda ha responsabilità su associazione “holding” solo nel ruolo di controllata (e non controllante), quindi dato un oggetto x della classe Azienda, si vuole poter conoscere l’azienda controllante_
 
 ```jsx
 public class Azienda {
@@ -444,8 +438,8 @@ public class Azienda {
 
 ### Associazioni binarie, con molteplicità 0..*, a responsabilità singola, senza attributi
 
-C ———A——— D
-                      0..*
+C ———A——— D\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0..*
 
 Per rappresentare l’associazione A fra le classi UML C e D, c’è bisogno di una struttura di dati per rappresentare i link tra l’oggetto della classe C e più oggetti della classe D
 
@@ -453,7 +447,7 @@ In particolare, la classe Java C avrà:
 
 - un **campo dati** di tipo opportuno (es HashSet)
 - il **costruttore** della classe C crea un oggetto di tale classe (riferimento ad un insieme vuoto)
-- dei **campi funzione** che permettano di gestire tale struttura di dati
+- dei **campi funzione** che permettano di gestire tale struttura di dati\
 (funzioni get, inserisci, elimina)
 
 *es. Persona haLavorato → Azienda*
@@ -462,12 +456,12 @@ In particolare, la classe Java C avrà:
 | --- |
 | Nome: stringa |
 
-ha lavorato in →      0..*
-——————————
-
 | Azienda |
 | --- |
 | RagioneSociale: stringa |
+
+**Persona** __________________ **Azienda**\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ha lavorato in →      0..*
 
 ```jsx
 public class Persona {
@@ -503,8 +497,8 @@ Realizzazione analoga a quella degli attributi di classe con molteplicità 0..*;
 
 ### Associazioni binarie, con molteplicità 0..1, a responsabilità singola, con attributi
 
-C ———A——— D
-                      0..1
+C ———A——— D\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0..1
 
 *es. solo Persona ha responsabilità sull’associazione*
 
@@ -521,13 +515,13 @@ La presenza degli attributi sull’associazione impedisce di usare i riferimenti
 La classe **TipoLinkA** avrà i campi per rappresentare:
 
 - gli **attributi** dell’associazione
-- i riferimenti agli oggetti delle due classi che costituiscono le componenti della coppia che il link rappresenta
+- i riferimenti agli oggetti delle due classi che costituiscono le componenti della coppia che il link rappresenta\
 (cioè delle variabili che contengono gli **identificatori** degli oggetti coivolti)
 
 Inoltre avrà le seguenti funzioni:
 
-- funzioni per la **gestione dei suoi campi dati**:
-costruttore (lancia eccezione se i riferimenti di tipo C e D sono null)
+- funzioni per la **gestione dei suoi campi dati**:\
+costruttore (lancia eccezione se i riferimenti di tipo C e D sono null)\
 funzioni **get**
 - funzione **equals()** ridefinita in modo da verificare l’uguaglianza solo sugli oggetti collegati dal link, ignorando gli attributi
 - funzione **hashCode()** ridefinita
@@ -536,9 +530,9 @@ funzioni **get**
 
 La classe Java C avrà:
 
-- un **campo dato** di tipo **TipoLinkA,** per rappresentare l’eventuale link
+- un **campo dato** di tipo **TipoLinkA,** per rappresentare l’eventuale link\
 (se il vale null, vuol dire che l’oggetto di classe C non è associato ad un oggetto di classe D)
-- dei **campi funzione** che permettono di gestire il link
+- dei **campi funzione** che permettono di gestire il link\
 (get, inserisci, elimina)
 
 ```jsx
@@ -624,8 +618,8 @@ pe.inserisciLinkLavora(t);
 
 ### Associazioni binarie, con molteplicità 0..*, a responsabilità singola, con attributi
 
-C ———A——— D
-                      0..*
+C ———A——— D\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0..*
 
 *es. solo la classe Persona ha responsabilità sull’associazione*
 
@@ -636,7 +630,7 @@ C ———A——— D
 |  | AnnoInizio: intero |  |
 |  | AnnoFine: intero |  |
 
-Bisogna definire un’apposita classe Java per la rappresentazione dei link (**TipoLinkHaLavorato**)
+Bisogna definire un’apposita classe Java per la rappresentazione dei link (**TipoLinkHaLavorato**)\
 Bisogna utilizzare una struttura di dati per la rappresentazione dei link.
 
 La classe **TipoLinkHaLavorato** deve gestire:
@@ -644,7 +638,7 @@ La classe **TipoLinkHaLavorato** deve gestire:
 - gli **attributi** dell’associazione (AnnoInizio, AnnoFine)
 - i **riferimenti** agli oggetti (di classe Persona e Azienda) relativi al link
 
-Pertanto avrà gli opportuni capi dati e funzioni (costruttori e get)
+Pertanto avrà gli opportuni capi dati e funzioni (costruttori e get)\
 Inoltre, avrà la funzione **equals** per verificare l’uguaglianza sugli oggetti, ignorando gli attributi e **hashCode** ridefinita
 
 ```jsx
@@ -679,11 +673,11 @@ public class TipoLinkHaLavorato {
 
 La classe Java Persona avrà:
 
-- un **campo per la rappresentazione di tutti i link** relativi ad un oggetto della classe
+- un **campo per la rappresentazione di tutti i link** relativi ad un oggetto della classe\
 (si utilizza la classe Java Set)
 - la funzione **inserisciLinkHaLavorato()** dovrà effettuare tutti i controlli necessari per mantenere la consistenza dei riferimenti
-- la funzione **eliminaLinkHaLavorato()** dovrà assicurarsi che:
-l’oggetto che rappresenta il link esista
+- la funzione **eliminaLinkHaLavorato()** dovrà assicurarsi che:\
+l’oggetto che rappresenta il link esista\
 la persona a cui si riferisce il link sia l’oggetto di invocazione
 - la funzione **getLinkHaLavorato()**
 
@@ -716,13 +710,9 @@ public class Persona {
 | --- | --- | --- | --- | --- | --- |
 |  |  | no attributi | attributo | no attributi | attributo |
 | inserimento | argomento | rif. a oggetto | rif. a link | rif. a oggetto | rif. a link |
-|  | controllo | - | arg ≠ null;
-link si rif a this;
-link == null | arg ≠ null | arg ≠ null;
-link si rif a this |
+|  | controllo | - | arg ≠ null; link si rif a this; link == null | arg ≠ null | arg ≠ null; link si rif a this |
 | cancellazione | argomento | null | nessuno | rif. a oggetto | rif. a link |
-|  | controllo | - | - | arg ≠ null | arg ≠ null;
-link si rif a this |
+|  | controllo | - | - | arg ≠ null | arg ≠ null; link si rif a this |
 
 ### Associazioni binarie a responsabilità doppia, con molteplicità 0..1
 
@@ -734,12 +724,12 @@ link si rif a this |
 |  | occupazione |  |
 |  | DaAnno: int |  |
 
-Quando **si crea** un link tra oggetto pe di classe Persona e un oggetto st di classe Stanza, bisogna cambiare lo stato di entrambi, poiché:
-pe deve fare riferimento a st
-st deve fare riferimento a pe
+Quando **si crea** un link tra oggetto pe di classe Persona e un oggetto st di classe Stanza, bisogna cambiare lo stato di entrambi, poiché:\
+pe deve fare riferimento a st\
+st deve fare riferimento a pe\
 Analogo discorso quando **si elimina** un link tra i due oggetti
 
-È preferibile **centralizzare** la responsabilità di assegnare i riferimenti in maniera corretta, in particolare si realizza un’ulteriore classe Java (**ManagerOccupazione**) che gestisce la corretta creazione della rete dei riferimenti, ogni suo oggetto ha un riferimento ad un oggetto Java che rappresenta un link di “occupazione”
+È preferibile **centralizzare** la responsabilità di assegnare i riferimenti in maniera corretta, in particolare si realizza un’ulteriore classe Java (**ManagerOccupazione**) che gestisce la corretta creazione della rete dei riferimenti, ogni suo oggetto ha un riferimento ad un oggetto Java che rappresenta un link di “occupazione”.
 
 La classe Persona, oltre ai campi dati e funzione per la gestione dei suoi attributi, avrà:
 
@@ -1052,7 +1042,7 @@ public final class ManagerResidenza {
 
 In questo caso la classe Studentee la classe Corso sono strutturalmente simili, avranno:
 
-- un ulteriore ca**mpo di tipo HashSet<TipoLinkEsame>** per poter rappresentare tutti i link (l’oggetto viene creato tramite costruttore)
+- un ulteriore **campo di tipo HashSet\<TipoLinkEsame\>** per poter rappresentare tutti i link (l’oggetto viene creato tramite costruttore)
 - tre **funzioni per la gestione dell’insieme dei link**:
     - inserisciLinkResidenza()
     - eliminaLinkResidenza()
@@ -1107,11 +1097,6 @@ public class Corso {
 		if (t != null && t.getCorso == this)
 			ManagerEsame.inserisci(t);
 	}
-	public String getNome() {return nome;}
-	public void inserisciLinkEsame(TipoLinkEsame t) {
-		if (t != null && t.getCorso() == this)
-			ManagerEsame.inserisci(t);
-	}
 	public void eliminaLinEsame(TipoLinkEsame t) {
 		if (t != null && t.getCorso() == this)
 			ManagerEsame.elimina(t);
@@ -1148,6 +1133,9 @@ public class TipoLinkEsame {
 	if (o != null && getClass.equals(o.getClass())) {
 		TipoLinkEsame b = (TipoLinkEsame)o;
 		return b.ilCorso == ilCorso && b.loStudente == loStudente;
+	}
+	public int hashCode() {
+		return ilCorso.hashCode() + loStudente.hashCode();
 	}
 	public Corso getCorso() {return ilCorso;}
 	public Studente getStudente() {return loStudente;}
@@ -1333,7 +1321,7 @@ public class Studente {
 }
 ```
 
-**Caso particolare - Molteplicità massima 1** 
+**Caso particolare - Molteplicità minima 1** 
 
 *es. sia Studente che CorsoDiLaurea hanno responsabilità sull’associazione*
 
@@ -1441,9 +1429,9 @@ Inoltre nel memorizzare i link, bisogna fare attenzione a non avere ripetizioni,
 
 **InizioSpecificaClasse Playlist**
 
-**durataTotale**(): intero
-     pre: nessuna
-     post: result è pari alla somma delle durate dei brani contenuti in this
+&nbsp;&nbsp;&nbsp;&nbsp;**durataTotale**(): intero\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: result è pari alla somma delle durate dei brani contenuti in this
 
 **FineSpecifica**
 
@@ -1501,9 +1489,9 @@ public class Brano {
 
 **InizioSpecificaCliente Analisi Playlist**
 
-**PiuLunghe** (i: Insieme(Playlist)) : Insieme(Playlist)
-     pre: nessuna
-     post: result è costituito dalle Playlist di i la cui durata totale è massima
+&nbsp;&nbsp;&nbsp;&nbsp;**PiuLunghe** (i: Insieme(Playlist)) : Insieme(Playlist)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: result è costituito dalle Playlist di i la cui durata totale è massima
 
 **FineSpecifica**
 
@@ -1786,13 +1774,13 @@ public class LibroStorico extends Libro {
 
 **InizioSpecificaCliente Valutazione Biblioteca**
 
-**QuantiAntichi** (i : Insieme(Libro), a: intero): intero
-     pre: nessuna
-     post: result è il numero di libri dati alle stampe prima dell’anno a nell’insieme di libri i
+&nbsp;&nbsp;&nbsp;&nbsp;**QuantiAntichi** (i : Insieme(Libro), a: intero): intero\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: result è il numero di libri dati alle stampe prima dell’anno a nell’insieme di libri i
 
-**QuantiStorici** (i : Insieme(Libro)): intero
-     pre: nessuna
-     post: result è il numero di libri storici nell’insieme di libri i
+&nbsp;&nbsp;&nbsp;&nbsp;**QuantiStorici** (i : Insieme(Libro)): intero\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: result è il numero di libri storici nell’insieme di libri i
 
 **FineSpecifica**
 
@@ -1989,15 +1977,15 @@ Tutta l’applicazione viene mesa in una package Java P, che comprende ogni clas
 
 **InizioSpecificaCliente StatisticaAutori**
 
-**Prolifici** (i: Insieme(Libro)): Insieme(Persona)
-     pre: nessuna
-     post: result è l’insieme di persone che sono autori di almeno due libri tra quelli di i
+&nbsp;&nbsp;&nbsp;&nbsp;**Prolifici** (i: Insieme(Libro)): Insieme(Persona)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: result è l’insieme di persone che sono autori di almeno due libri tra quelli di i
 
 **FineSpecifica**
 
 **Struttura file e direttori**
 
-```jsx
+```
 |
 +---PackageLibri
 | | StatisticaAutori.java
