@@ -2,39 +2,39 @@
 
 La fase di progetto ha come obiettivo definire l’architettura del programma e scegliere le strutture di rappresentazione
 
-- **Input:** output della fase di analisi, cioè:
-diagramma delle classi e degli oggetti;
-diagramma delle attività;
+- **Input:** output della fase di analisi, cioè:\
+diagramma delle classi e degli oggetti;\
+diagramma delle attività;\
 diagramma degli stati e delle transizioni
-- **Output:** input della fase di realizzazione, cioè:
-****specifica (formale) delle operazioni;
-scelta delle classi UML che hanno **responsabilità** sulle associazioni:
-scelta delle **strutture di dati;**
-scelta della corrispondenza fra **tipi** UML e Java;
+- **Output:** input della fase di realizzazione, cioè:\
+specifica (formale) delle operazioni;\
+scelta delle classi UML che hanno **responsabilità** sulle associazioni:\
+scelta delle **strutture di dati;**\
+scelta della corrispondenza fra **tipi** UML e Java;\
 …
 
 ### Responsabilità sulle associazioni
 
-Una classe C ha responsabilità sull’associazione A se è possibile, dato un oggetto x di C:
-**conoscere** l’istanza di A alle quali x partecipa;
-**aggiungere** una nuova istanza
-**cancellare** un’istanza
+Una classe C ha responsabilità sull’associazione A se è possibile, dato un oggetto x di C:\
+**conoscere** l’istanza di A alle quali x partecipa;\
+**aggiungere** una nuova istanza\
+**cancellare** un’istanza\
 **aggiornare** il valore di un attributo 
 
 **Criteri:**
 
-- requisiti (R)
+- requisiti (R)\
 nel documento vi è una richiesta esplicita di “conoscere, aggiungere, cancellare, aggiornare”
-- operazioni (O)
+- operazioni (O)\
 esistono delle operazioni che richiedono di conoscere il verso di navigabilità dell’associazione
-- molteplicità (M)
-solo 0..* non richiede responsabilità, gli altri casi implicano la responsabilità
+- molteplicità (M)\
+solo 0..* non richiede responsabilità, gli altri casi implicano la responsabilità\
 in particolare se vi è: molteplicità massima finita o molteplicità minima diversa da 0
 
 **Tabella delle responsabilità**
 
-*es. Data ScuolaElem interessa conoscere Provveditorato? 
-  se SI, perché?*
+_es. Data ScuolaElem interessa conoscere Provveditorato? 
+  Se SI, perché?_
 
 | Associazione | Classe | Responsabilità |
 | --- | --- | --- |
@@ -62,7 +62,7 @@ Ogni volta che c’è una chiara corrispondenza con il tipo UML, bisogna sceglie
 
 **Tabella di corrispondenza dei tipi**
 
-| **Tipo** UML | **Rappresentazione** in Java |
+| Tipo UML | Rappresentazione in Java |
 | --- | --- |
 | intero | int |
 | interoPositivo | int |
@@ -73,15 +73,15 @@ Ogni volta che c’è una chiara corrispondenza con il tipo UML, bisogna sceglie
 
 **Considerazioni**
 
-- Se il tipo UML è necessario per un attributo di classe con una sua molteplicità:
-*es. NumeroTelefonico: Stringa {0..*}*
-si sceglie di rappresentare l’attributo mediante **collezioni omogenee**, come Set
+- Se il tipo UML è necessario per un attributo di classe con una sua molteplicità:\
+*es. NumeroTelefonico: Stringa {0..*}*\
+si sceglie di rappresentare l’attributo mediante **collezioni omogenee**, come Set\
 *es. HashSet<Integer> s = new HashSet<Integer>();*
-- Se non esiste in Java un tipo base o una classe che corrisponda al tipo dell’attributo UML:
-si realizzano classi UML con:
-`toString()`: si può prevedere di farne overriding
-`equals()`: è **necessario** fare overriding 
-`hashCode()`: è **necessario** fare overriding (devono avere lo stesso hashCode)
+- Se non esiste in Java un tipo base o una classe che corrisponda al tipo dell’attributo UML:\
+si realizzano classi UML con:\
+`toString()`: si può prevedere di farne overriding\
+`equals()`: è **necessario** fare overriding \
+`hashCode()`: è **necessario** fare overriding (devono avere lo stesso hashCode)\
 `clone()`: se gli oggetti sono immutabili (non si effettua side-effect) non è necessario ridefinirlo; ma se qualche funzione effettua side-effect è **necessario** fare overriding
 
 *es. classe Java Data*
@@ -150,17 +150,17 @@ public class DataFunzionale {
 
 Un’operazione potrebbe avere delle precondizioni, come ad esempio l’operazione NumeroMedioAlunniPerDocente ha la precondizione che il suo argomento non sia l’insieme vuoto
 
-**Verifica nel lato client**
+**Verifica nel lato client**\
 Il cliente ha bisogno di un certo grado di conoscenza dei meccanismi di funzionamento della classe, il controllo verrà duplicato in ognuno dei clienti
 
-**Verifica nel lato server**
+**Verifica nel lato server**\
 Un altro approccio prevede che sia la classe stessa a occuparsi della verifica delle precondizioni, le funzioni quindi lanceranno un’eccezione qualora le condizioni non siano rispettate
 
 *es.*
 
 ```jsx
 public class EccezionePrecondizioni extends Exception {
-	****private String messaggio;
+	private String messaggio;
 	public EccezionePrecondizioni(String m) {
 		messaggio = m;
 	}
@@ -195,13 +195,13 @@ public class Amministrativo {
 
 Distinzione: 
 
-proprietà **singole** (attributi e associazioni con molteplicità 1..1)
+proprietà **singole** (attributi e associazioni con molteplicità 1..1)\
 proprietà **multiple**
 
 Assunzioni di default:
 
-tutte le proprietà sono **mutabili**;
-****le proprietà singole sono **note alla nascita**;
+tutte le proprietà sono **mutabili**;\
+le proprietà singole sono **note alla nascita**;\
 le proprietà multiple **non sono note alla nascita**
 
 Ovviamente si possono effettuare anche scelte differenti da quelle di default, ad esempio è possibile anche avere proprietà **immutabili**
