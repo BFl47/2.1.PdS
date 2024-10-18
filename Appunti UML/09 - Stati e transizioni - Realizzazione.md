@@ -130,7 +130,8 @@ public class OggettoConStato implements Listener {
 			if (e.getClass() == EventoRilevante.class)
 				if (Cond_ij) {
 					//azioni con l'evento: eventualemnte con (EventoRilevate)e.getArgs()
-					nuovoevento = new MioEvento(this, destinatario, info) //se la transizione non genera eventi, nuovoevento = null
+					nuovoevento = new MioEvento(this, destinatario, info)
+					//se la transizione non genera eventi, nuovoevento = null
 					statocorrente = Stato.STATO_j;
 				}
 			break;
@@ -144,7 +145,7 @@ public class OggettoConStato implements Listener {
 
 **Note:** il corpo della funzione fired() è costituito da un **case** sullo stato corrente che definisce come si risponde all’evento passato come parametro di ingresso
 
-![statoi_j.jpg](Stati%20e%20transizioni%20-%20Realizzazione%2029e1f27a2ddf4ea6b01e11362169ef78/statoi_j.jpg)
+![statoi_j.jpg](https://github.com/BFl47/2.1.PdS/blob/main/Appunti%20UML/Immagini/09%20-%20statoi_j.jpg)
 
 ### Realizzazione dell’Environment sequenziale
 
@@ -291,7 +292,7 @@ Il **funtore** che realizza fired()
 La classe GiocatoreFired
 
 ```jsx
-public GiocatoreFired implements Task {
+class GiocatoreFired implements Task {
 	private boolean eseguita = false;
 	private Giocatore g;
 	private Evento e;
@@ -342,8 +343,8 @@ Una **ConcurrentMap** (o dizionario thread-safe) con:
 - **Informazione**: la coda **bloccante** degli eventi indirizzati al listener
 
 ```jsx
-public final class Environment {      //non si possono definire sottoclassi
-	private Environment() {}            //non si possono costruire oggetti Environment
+public final class Environment {      		//non si possono definire sottoclassi
+	private Environment() {}         	//non si possono costruire oggetti Environment
 	private static ConcurrentHashMap<Listener, LinkedBlockingQueue<Evento>> codeEventiDeiListener = 
 			new ConcurrentHashMap<Listener, LinkedBlockingQueue<Evento>>();
 	
@@ -403,7 +404,7 @@ La classe attiva un thread per ogni oggetto Listener, ha quindi una struttura da
 
 Queste funzioni possono essere usate solo in certi stati, per limitare le invocazioni ai metodi e per non scambiare eventi
 
-![stati e_environment.jpg](Stati%20e%20transizioni%20-%20Realizzazione%2029e1f27a2ddf4ea6b01e11362169ef78/stati_e_environment.jpg)
+![stati e_environment.jpg](https://github.com/BFl47/2.1.PdS/blob/main/Appunti%20UML/Immagini/09%20-%20stati_e_environment.jpg)
 
 **La classe EsecuzioneListener** 
 
