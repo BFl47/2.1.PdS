@@ -11,22 +11,21 @@ Specifica di una classe C:
 
 **InizioSpecificaClasse C**
 
-Specifica della operazione 1
-…
-Specifica della operazione N
+&nbsp;&nbsp;&nbsp;&nbsp;Specifica della operazione 1\
+&nbsp;&nbsp;&nbsp;&nbsp;…\
+&nbsp;&nbsp;&nbsp;&nbsp;Specifica della operazione N
 
 **FineSpecifica**
 
 Specifica di un’operazione:
 
-**alfa (X1: T1, …, Xn: Tn): T
-     pre:** condizione
-     **post:** condizione
+**alfa (X1: T1, …, Xn: Tn): T\
+&nbsp;&nbsp;&nbsp;&nbsp;pre:** condizione\
+&nbsp;&nbsp;&nbsp;&nbsp;**post:** condizione
 
 - alfa (X1: T1, …, Xn: Tn): T è la **segnatura** dell’operazione
 - pre rappresenta la **precondizione** dell’operazione, cioè l’insieme delle condizioni che devono valere **prima** dei ogni esecuzione dell’operazione
 - post rappresenta le **postcondizioni** dell’operazione, cioè l’insieme delle condizioni che devono valere **alla fine** di ogni esecuzione dell’operazione
-****
 
 *es. di specifica di un’operazione*
 
@@ -41,9 +40,9 @@ Specifica di un’operazione:
 
 **InizioSpecificaClasse** **CorsoDiLaurea**
 
-NumeroStud() : int
-     pre: nessuna
-     post: result è uguale al numero di studenti iscritti nel corso di laurea this
+&nbsp;&nbsp;&nbsp;&nbsp;NumeroStud() : int\
+&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;post: result è uguale al numero di studenti iscritti nel corso di laurea this
 
 **FineSpecifica**
 
@@ -59,36 +58,36 @@ Nota: nella specifica si usa:
 *es.*
 
 | Studente |  | CorsoDiLaurea |
-| --- | --- | --- |
+| :---: | :---: | :---: |
 | Matricola: int | iscritto | Nome: stringa |
 | Età: int | ——————— 0..1 | Codice: stringa |
 | NumEsami: int |  | NumStudenti(): int |
 | Iscrizione (c: CorsoDiLaurea) |  |  |
 | MediaVoti(): real |  |  |
 |  |  |  |
-| Professore | ————————— | Corso |
-| Codice: stringa | Esame | Nome: stringa |
+| **Professore** | ————————— | **Corso** |
+| Codice: stringa | **Esame** | Nome: stringa |
 | Età: int | Voto: int | Disciplina: stringa |
 | NumVerb: int |  |  |
 | Verbalizza (s: Studente, c: Corso, v: int) |  |  |
 
 **InizioSpecificaClasse Professore**
 
-Verbalizza (s: Studente, c: Corso, v: int)
-     pre: s non ha ancora eseguito l’esame c, 18 ≤ v ≤ 31
-     post: this, s e c sono collegati da un link di tipo Esame, con voto v.Esame = pre(Esame), inoltre s.NumEsami == pre(s.NumEsami) +1 e this.NumVerb == pre(this.NumVerb)+1
+&nbsp;&nbsp;&nbsp;&nbsp;Verbalizza (s: Studente, c: Corso, v: int)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: s non ha ancora eseguito l’esame c, 18 ≤ v ≤ 31\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: this, s e c sono collegati da un link di tipo Esame, con voto v.Esame = pre(Esame), inoltre s.NumEsami == pre(s.NumEsami) +1 e this.NumVerb == pre(this.NumVerb)+1
 
 **FineSpecifica**
 
 **InizioSpecificaClasse Studente**
 
-Iscrizione (c: CorsoDiLaurea)
-     pre: this non è iscritto ad alcun CorsoDiLaurea
-     post: this è iscritto al CorsoDiLaurea c
+&nbsp;&nbsp;&nbsp;&nbsp;Iscrizione (c: CorsoDiLaurea)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: this non è iscritto ad alcun CorsoDiLaurea\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: this è iscritto al CorsoDiLaurea c
 
-MediaVoti(): real
-     pre: this.NumEsami > 0
-     post: result è la media dei voti degli esami sostenuti da this
+&nbsp;&nbsp;&nbsp;&nbsp;MediaVoti(): real\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: this.NumEsami > 0\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: result è la media dei voti degli esami sostenuti da this
 
 **FineSpecifica**
 
@@ -100,13 +99,13 @@ Del tutto analoga alla specifica delle classi:
 
 **InizioSpecificaAttivitàAtomica A**
 
-…
+&nbsp;&nbsp;&nbsp;&nbsp;…
 
 **FineSpecifica**
 
-**alfa (X1: T1, …, Xn: Tn): (Y1: T1, …, Yn: Tn)
-     pre:** condizione
-     **post:** condizione
+**alfa (X1: T1, …, Xn: Tn): (Y1: T1, …, Yn: Tn)\
+&nbsp;&nbsp;&nbsp;&nbsp;pre:** condizione\
+&nbsp;&nbsp;&nbsp;&nbsp;**post:** condizione
 
 - alfa (X1: T1, …, Xn: Tn): (Y1: T1, …, Yn: Tn) è la **segnatura** dell’operazione
     - alfa è il nome dell’operazione (cioè quello dell’attività atomica)
@@ -126,9 +125,9 @@ Si usano invece:
 
 **InizioSpecificaAttivitàAtomica MediaEsami**
 
-MediaEsami (c: CorsoDiLaurea) : (result: real)
-     pre: c.NumStudenti() > 0
-     post: result è uguale al numero degli esami del corso (cioè le triple studente, professore, corso) diviso c.NumStudenti()
+&nbsp;&nbsp;&nbsp;&nbsp;MediaEsami (c: CorsoDiLaurea) : (result: real)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: c.NumStudenti() > 0\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: result è uguale al numero degli esami del corso (cioè le triple studente, professore, corso) diviso c.NumStudenti()
 
 **FineSpecifica**
 
@@ -148,7 +147,7 @@ Il **processo** descritto da tale attività insiste sul diagramma delle classi, 
 
 *Diagramma delle attività*
 
-![diagramma_attivita.jpg](Specifica%20classi%20e%20attivita%CC%80%2035034d563f1c41179027bf7330751e36/diagramma_attivita.jpg)
+![diagramma_attivita.jpg](https://github.com/BFl47/2.1.PdS/blob/main/Appunti%20UML/Immagini/05%20-%20diagramma_attivita.jpg)
 
 Il diagramma delle attività si compone di:
 
@@ -167,33 +166,33 @@ Il diagramma delle attività si compone di:
 
 **InizioSpecificaAttivitàAtomica AperturaConto**
 
-Apertura Conto (p1: Persona, p2: Persona) : (c: Conto, no: int, s: int)
-     pre: nessuna
-     post: c è un nuovo conto (con c.id = numero progressivo, c.saldo = 0 e c.numOperazioni = 0) e no = c.numOperazioni e s=c.saldo e possedere = pre(possedere) union {<p1, c>, <p2, c>}
+&nbsp;&nbsp;&nbsp;&nbsp;Apertura Conto (p1: Persona, p2: Persona) : (c: Conto, no: int, s: int)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: c è un nuovo conto (con c.id = numero progressivo, c.saldo = 0 e c.numOperazioni = 0) e no = c.numOperazioni e s=c.saldo e possedere = pre(possedere) union {<p1, c>, <p2, c>}
 
 **FineSpecifica**
 
 **InizioSpecificaAttivitàAtomica Depositare**
 
-Depositare (p: Persona, c: Conto)
-     pre: <p, c> in possedere
-     post: c.saldo == pre(c.saldo) + random (si deposita una somma a caso) && c.numOperazioni == pre(c.numOperazioni)+1
+&nbsp;&nbsp;&nbsp;&nbsp;Depositare (p: Persona, c: Conto)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: <p, c> in possedere\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: c.saldo == pre(c.saldo) + random (si deposita una somma a caso) && c.numOperazioni == pre(c.numOperazioni)+1
 
 **FineSpecifica**
 
 **InizioSpecificaAttivitàAtomica Prelevare**
 
-Prelevare (p: Persona, c: Conto)
-     pre: <p, c> in possedere
-     post: c.saldo == pre(c.saldo) - random (si preleva una somma a caso) && c.numOperazioni == pre(c.numOperazioni)+1
+&nbsp;&nbsp;&nbsp;&nbsp;Prelevare (p: Persona, c: Conto)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: <p, c> in possedere\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: c.saldo == pre(c.saldo) - random (si preleva una somma a caso) && c.numOperazioni == pre(c.numOperazioni)+1
 
 **FineSpecifica**
 
 **InizioSpecificaAttivitàAtomica Verifica**
 
-Verifica (c: Conto) : (no: int, s: int)
-     pre: nessuna
-     post: s == c.saldo and no == c.numOperazioni
+&nbsp;&nbsp;&nbsp;&nbsp;Verifica (c: Conto) : (no: int, s: int)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: s == c.saldo and no == c.numOperazioni
 
 **FineSpecifica**
 
@@ -201,25 +200,25 @@ Verifica (c: Conto) : (no: int, s: int)
 
 **InizioSpecificaI/O AcquisizioneDati**
 
-AcquisizioneDati() : (p1: Persona, p2: Persona)
-     pre: nessuna
-     post: gli oggetti p1, p2 vengono identificati con i valori letti da input
+&nbsp;&nbsp;&nbsp;&nbsp;AcquisizioneDati() : (p1: Persona, p2: Persona)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: gli oggetti p1, p2 vengono identificati con i valori letti da input
 
 **FineSpecifica**
 
 **InizioSpecificaI/O StampaKO**
 
-StampaKO()
-     pre: nessuna
-     post: manda in output messaggio “KO”
+&nbsp;&nbsp;&nbsp;&nbsp;StampaKO()\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: manda in output messaggio “KO”
 
 **FineSpecifica**
 
 **InizioSpecificaI/O StampaOK**
 
-StampaOK()
-     pre: nessuna
-     post: manda in output messaggio “OK”
+&nbsp;&nbsp;&nbsp;&nbsp;StampaOK()\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre: nessuna\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post: manda in output messaggio “OK”
 
 **FineSpecifica**
 
